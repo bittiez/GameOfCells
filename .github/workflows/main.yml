@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions: write-all
     steps:
       # Always include the checkout step so that 
       # your project is available for Godot to export
@@ -33,5 +33,5 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         generateReleaseNotes: true
-        tag: ${{ github.ref_name }}
+        tag: "Latest Release"
         artifacts: ${{ steps.export.outputs.archive_directory }}/*
