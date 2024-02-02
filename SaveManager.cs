@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Godot;
+using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -24,9 +25,9 @@ namespace GameOfCells
         public static HighScoreSave Load()
         {
 
-            if (File.Exists(SAVE_FILE))
+            if (File.Exists(ProjectSettings.GlobalizePath(SAVE_FILE)))
             {
-                var file = File.ReadAllText(SAVE_FILE);
+                var file = File.ReadAllText(ProjectSettings.GlobalizePath(SAVE_FILE));
 
                 if (!string.IsNullOrEmpty(file))
                 {
@@ -50,7 +51,7 @@ namespace GameOfCells
             Task.Run(() =>
             {
                 saving = true;
-                File.WriteAllText(SAVE_FILE, JsonSerializer.Serialize(this));
+                File.WriteAllText(ProjectSettings.GlobalizePath(SAVE_FILE), JsonSerializer.Serialize(this));
                 saving = false;
             });
         }
