@@ -13,6 +13,7 @@ namespace GameOfCells
         public int GridHeight => gridMap.GetLength(1);
 
         public long Steps { get; private set; } = 0;
+        public int CellCount { get; private set; } = 0;
 
         private Cell[,] gridMap;
 
@@ -108,6 +109,7 @@ namespace GameOfCells
             Stopwatch sw = Stopwatch.StartNew();
 #endif
             bool hadAChange = false;
+            int newCount = 0;
 
             for (int i = 0; i < gridMap.GetLength(0); i++)
             {
@@ -130,6 +132,8 @@ namespace GameOfCells
                             hadAChange = true;
                         }
                     }
+
+                    if (cell.IsCell) { newCount++; }
                 }
             }
 
@@ -137,6 +141,7 @@ namespace GameOfCells
             {
                 Steps++;
             }
+            CellCount = newCount;
 
 #if DEBUG
             sw.Stop();

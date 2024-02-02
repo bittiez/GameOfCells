@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://156ox17e8n78"]
+[gd_scene load_steps=8 format=3 uid="uid://156ox17e8n78"]
 
 [ext_resource type="Texture2D" uid="uid://c1l8av4vnefgg" path="res://assets/images/WhitePixel.png" id="1_7ocf6"]
 [ext_resource type="Script" path="res://main.cs" id="1_gxw38"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dcflu368fkaa2" path="res://assets/Exo2-VariableFont_wght.ttf" id="3_bar02"]
 [ext_resource type="Script" path="res://Steps.cs" id="4_3yn7d"]
 [ext_resource type="Script" path="res://StepTimer.cs" id="5_5m6p8"]
+[ext_resource type="Script" path="res://CellCount.cs" id="6_df0da"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gxw38")
@@ -57,7 +58,24 @@ script = ExtResource("4_3yn7d")
 [node name="StepTimer" type="Label" parent="CanvasLayer"]
 offset_right = 305.0
 offset_bottom = 40.0
+vertical_alignment = 2
 script = ExtResource("5_5m6p8")
+
+[node name="CellCount" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -233.0
+offset_top = -46.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_bar02")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("6_df0da")
 
 [node name="BackGround" type="Sprite2D" parent="."]
 modulate = Color(0, 0.176471, 0.290196, 1)
