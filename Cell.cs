@@ -72,7 +72,7 @@ namespace GameOfCells
                     if (neighborX >= 0 && neighborX < GridManager.Instance.GridWidth && neighborY >= 0 && neighborY < GridManager.Instance.GridHeight)
                     {
                         Cell cell = GridManager.Instance.GetCell(neighborX, neighborY);
-                        if (cell.IsCell)
+                        if (cell != null && cell.IsCell)
                             neighbors.Add(cell);
                     }
                 }

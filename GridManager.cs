@@ -200,8 +200,11 @@ namespace GameOfCells
             if (cell.Type == Cell.CellType.Virus)
             {
                 Cell[] neighbors = cell.GetNeighbors();
-
-                neighbors[GD.RandRange(0, neighbors.Length - 1)].Type = Cell.CellType.None;
+                Cell chosenCell = neighbors[GD.RandRange(0, neighbors.Length - 1)];
+                if (chosenCell != null)
+                {
+                    chosenCell.Type = Cell.CellType.None;
+                }
 
                 if (GD.Randf() > 0.98)
                 {
