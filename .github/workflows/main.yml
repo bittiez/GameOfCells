@@ -1,0 +1,29 @@
+name: Godot Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup Godot
+      uses: crazy-max/ghaction-godot@v3
+      with:
+        version: '3.3.2'  # Adjust the Godot version as needed
+
+    - name: Build Godot Project
+      run: godot --export "Windows" bin
+
+    - name: Deploy to GitHub Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        files: bin/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
