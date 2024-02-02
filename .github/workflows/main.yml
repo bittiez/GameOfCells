@@ -14,12 +14,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup Godot
-      uses: crazy-max/ghaction-godot@v3
+      uses: paulloz/godot-action@v1.2.2
       with:
-        version: '3.3.2'  # Adjust the Godot version as needed
-
-    - name: Build Godot Project
-      run: godot --export "Windows" bin
+        version: 4.2.1
+    - run: |
+        godot --version
+        godot --export Windows bin
 
     - name: Deploy to GitHub Releases
       uses: softprops/action-gh-release@v1
