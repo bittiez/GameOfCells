@@ -197,14 +197,16 @@ namespace GameOfCells
 
         private void ApplySpecialRules(Cell cell)
         {
-            if (cell.Type == Cell.CellType.Virus && GD.Randf() > 0.90)
+            if (cell.Type == Cell.CellType.Virus)
             {
-                foreach (Cell c in cell.GetNeighbors())
-                {
-                    c.Type = Cell.CellType.None;
-                }
+                Cell[] neighbors = cell.GetNeighbors();
 
-                cell.Type = Cell.CellType.None;
+                neighbors[GD.RandRange(0, neighbors.Length - 1)].Type = Cell.CellType.None;
+
+                if (GD.Randf() > 0.98)
+                {
+                    cell.Type = Cell.CellType.None;
+                }
             }
         }
     }
